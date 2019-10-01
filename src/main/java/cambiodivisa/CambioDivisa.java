@@ -1,12 +1,14 @@
 package cambiodivisa;
 
 import javafx.application.Application;
+import javafx.application.Preloader.ErrorNotification;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -73,11 +75,18 @@ public class CambioDivisa extends Application {
 
 	private void onConvertirButtonAction() {
 		
+		try {
 		Divisa divisaEntrada = divisa1Combo.getSelectionModel().getSelectedItem();
 		Divisa divisaSalida = divisa2Combo.getSelectionModel().getSelectedItem();
 		double cantidad = Double.parseDouble(linea1Text.getText());
 		Divisa.fromTo(divisaEntrada, divisaSalida,cantidad);
 		linea2Text.setText(Divisa.fromTo(divisaEntrada, divisaSalida,cantidad).toString());
+		}catch(Exception e) {
+			ErrorDeAlerta = new Alert(AlertType.ERROR);
+			ErrorDeAlerta.setHeaderText("Intento de inicio de sesión");
+			ErrorDeAlerta.setContentText("Error");
+			ErrorDeAlerta.showAndWait();
+		}
 		
 	}
 
