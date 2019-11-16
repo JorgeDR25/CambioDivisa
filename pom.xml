@@ -3,7 +3,7 @@
   <groupId>dad.javafx</groupId>
   <artifactId>CambioDivisa</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <exec.mainClass>cambiodivisa</exec.mainClass>
+  <exec.mainClass>cambiodivisa.Main</exec.mainClass>
   
   
    <properties>
